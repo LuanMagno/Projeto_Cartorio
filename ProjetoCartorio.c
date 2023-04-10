@@ -120,7 +120,8 @@ int main()
       printf("\t###Cartório da Ebac###\n\n");
       printf(" Opcao 1 - Registrar nomes\n");
       printf(" Opcao 2 - Pesquisar nomes\n");
-      printf(" Opcao 3 - Deletar nomes\n\n");
+      printf(" Opcao 3 - Deletar nomes\n");
+      printf(" Opcao 4 - Sair do sistema\n\n");
       printf("Opção:");
     
       scanf("%d", &opcao);//para ler a opção utilizada
@@ -135,6 +136,10 @@ int main()
       break;
       case 3:
          deletar();    
+      break;
+      case 4:
+        printf("Obrigado por usar o sistema!");
+        return 0;
       break;
       default:
          printf("Escolha uma opção válida\n");
