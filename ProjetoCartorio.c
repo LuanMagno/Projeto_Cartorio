@@ -3,6 +3,7 @@
 #include <locale.h>
 #include <string.h>
 
+
 int registrar()//Responsável por registrar usuários no sistema
 {
    //variáveis 
@@ -91,7 +92,6 @@ int deletar()//Deletar usuário cadastrado
    char cpf[15];
    printf("Digite o cpf do usuário a ser deletado:"); 
    scanf("%s", cpf);
-
    remove(cpf);
    FILE *file;
    file= fopen(cpf,"r");
@@ -114,41 +114,56 @@ int main()
    setlocale(LC_ALL, "Portuguese");//definindo linguagem
    int opcao=0;
    int repet=1;
-   for (repet=1;repet=1;)
-   {
-      
-      printf("\t###Cartório da Ebac###\n\n");
-      printf(" Opcao 1 - Registrar nomes\n");
-      printf(" Opcao 2 - Pesquisar nomes\n");
-      printf(" Opcao 3 - Deletar nomes\n");
-      printf(" Opcao 4 - Sair do sistema\n\n");
-      printf("Opção:");
-    
-      scanf("%d", &opcao);//para ler a opção utilizada
+   int comparacao;
+   char senhadigitada[10]="a";
+   
+   printf("\t###Cartório da Ebac###\n\n");
+   printf("Conta do administrador\nDigite sua senha: ");
+   scanf("%s", senhadigitada);
 
-      switch (opcao)
-      {
-      case 1:
-         registrar();           
-      break;
-      case 2:
-         consultar();    
-      break;
-      case 3:
-         deletar();    
-      break;
-      case 4:
-        printf("Obrigado por usar o sistema!");
-        return 0;
-      break;
-      default:
-         printf("Escolha uma opção válida\n");
-         system("pause");
-      break;
-      }
+   comparacao = strcmp(senhadigitada, "admin");
+   
+   if (comparacao == 0)
+   {
       system("cls");
-    }
+      for (repet=1;repet=1;)
+      {
+         printf("\t###Cartório da Ebac###\n\n");
+         printf(" Opcao 1 - Registrar nomes\n");
+         printf(" Opcao 2 - Pesquisar nomes\n");
+         printf(" Opcao 3 - Deletar nomes\n");
+         printf(" Opcao 4 - Sair do sistema\n\n");
+         printf("Opção:");
+      
+         scanf("%d", &opcao);//para ler a opção utilizada
+
+         switch (opcao)
+         {
+         case 1:
+            registrar();           
+         break;
+         case 2:
+            consultar();    
+         break;
+         case 3:
+            deletar();    
+         break;
+         case 4:
+         printf("Obrigado por usar o sistema!");
+         return 0;
+         break;
+         default:
+            printf("Escolha uma opção válida\n");
+            system("pause");
+         break;
+         }
+         system("cls");
+      }
+   }
+   else
+      printf("Senha incorreta");
    return 0;//Não é essencial porém é uma "boa pratica"
+   
 }
 //- || significa "ou"
 //- (O switch é melhor utilizado em vez de se precisa colocar várioss ifs, o case é para cada caso e o 
